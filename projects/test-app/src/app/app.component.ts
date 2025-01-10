@@ -12,8 +12,11 @@ import {
 	styleUrl: './app.component.scss',
 })
 export class AppComponent {
-	// noinspection JSUnusedLocalSymbols
-	// eslint-disable-next-line no-unused-private-class-members
 	#themeService = inject(ThemeService);
+
 	title = 'test-app';
+
+	constructor() {
+		console.log(this.#themeService);
+	}
 }
