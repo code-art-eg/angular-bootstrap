@@ -24,7 +24,7 @@ jobs:
               run: yarn install --frozen-lockfile
 
             - name: Build project
-              run: yarn build --prod angular-bootstrap
+              run: yarn build
 
             - name: Publish to npm
               run: yarn publish --provenance --access public
