@@ -1,6 +1,11 @@
 {
 	"compileOnSave": false,
 	"compilerOptions": {
+		"paths": {
+			"@code-art-eg/angular-bootstrap": [
+				"./projects/angular-bootstrap/src/public-api.ts"
+			]
+		},
 		"outDir": "./dist/out-tsc",
 		"strict": true,
 		"noImplicitOverride": true,
