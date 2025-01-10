@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AngularBootstrapComponent } from '@code-art-eg/angular-bootstrap';
+import {
+	ThemePickerComponent,
+	ThemeService,
+} from '@code-art-eg/angular-bootstrap';
 
 @Component({
 	selector: 'app-root',
-	imports: [RouterOutlet, AngularBootstrapComponent],
+	imports: [RouterOutlet, ThemePickerComponent],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.scss',
 })
 export class AppComponent {
+	#themeService = inject(ThemeService);
 	title = 'test-app';
 }
