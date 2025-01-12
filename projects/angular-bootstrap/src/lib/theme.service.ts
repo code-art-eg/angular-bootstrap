@@ -1,7 +1,8 @@
 import { inject, Injectable, OnDestroy } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { THEME_PROVIDER_TOKEN, THEMES } from './constants';
+import { THEME_PROVIDER_TOKEN } from './constants';
+import { THEMES } from './themes';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 const APP_THEME_ATTR = 'data-bs-theme';
 

@@ -1,30 +1,11 @@
 import { inject, InjectionToken } from '@angular/core';
 import { LocalStorageThemeProviderService } from './local-storage-theme-provider.service';
-import { Observable } from 'rxjs';
+import type { Theme, ThemeProvider } from './types';
 
 const CONFIG_PREFIX = 'angular-bootstrap';
 export const DEFAULT_APP_THEME_KEY = CONFIG_PREFIX + '.theme';
 
-export const THEMES = ['light', 'dark'] as const;
-export type Theme = (typeof THEMES)[number];
 export const DEFAULT_APP_THEME: Theme = 'light';
-
-/**
- * Interface for theme providers.
- * A theme provider stores and provides the current theme.
- * And it emits an observable for theme changes.
- */
-export interface ThemeProvider {
-	/**
-	 * The current theme.
-	 */
-	theme: Theme | null;
-
-	/**
-	 * Observable for theme changes.
-	 */
-	readonly theme$: Observable<Theme | null>;
-}
 
 /**
  * Injection token for the theme storage key.

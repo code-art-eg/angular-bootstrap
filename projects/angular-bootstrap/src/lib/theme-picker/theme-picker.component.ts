@@ -1,78 +1,58 @@
-import { Component, inject, Input } from '@angular/core';
-import { Theme, THEME_PROVIDER_TOKEN } from '../constants';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-
-interface Button {
-	id: number;
-	icon: string;
-	theme: Theme | null;
-	active: boolean;
-}
+import {
+	Component,
+	inject,
+	Input,
+	OnChanges,
+	SimpleChanges,
+} from '@angular/core';
+import { THEME_PROVIDER_TOKEN } from '../constants';
+import type { PickerOption } from '../types';
+import { PickerComponent } from '../picker/picker.component';
 
 @Component({
 	selector: 'bs-theme-picker',
-	imports: [],
 	templateUrl: './theme-picker.component.html',
 	styleUrl: './theme-picker.component.scss',
+	imports: [PickerComponent],
 })
-export class ThemePickerComponent {
-	readonly #themeProvider = inject(THEME_PROVIDER_TOKEN);
+export class ThemePickerComponent implements OnChanges {
+	readonly themeProvider = inject(THEME_PROVIDER_TOKEN);
 
 	@Input() lightLabel = 'Light';
 	@Input() darkLabel = 'Dark';
 	@Input() autoLabel = 'Auto';
 
+	options: PickerOption[] = this.#getPickerOptions();
+
 	show = false;
-	buttons: Button[] = [
-		{
-			id: 1,
-			icon: 'sun-fill',
-			theme: 'light',
-			active: false,
-		},
-		{
-			id: 2,
-			icon: 'moon-stars-fill',
-			theme: 'dark',
-			active: false,
-		},
-		{
-			id: 3,
-			icon: 'circle-half',
-			theme: null,
-			active: false,
-		},
-	];
 
-	constructor() {
-		this.#themeProvider.theme$
-			.pipe(takeUntilDestroyed())
-			.subscribe(theme => this.#onThemeChanged(theme));
-	}
-
-	changeTheme(theme: Theme | null): void {
-		this.#themeProvider.theme = theme;
-		this.show = false;
-	}
-
-	getLabel(theme: Theme | null): string {
-		switch (theme) {
-			case 'light':
-				return this.lightLabel;
-			case 'dark':
-				return this.darkLabel;
-			default:
-				return this.autoLabel;
+	ngOnChanges(changes: SimpleChanges): void {
+		if (
+			changes['lightLabel'] ||
+			changes['darkLabel'] ||
+			changes['autoLabel']
+		) {
+			this.options = this.#getPickerOptions();
 		}
 	}
 
-	getActiveIcon(): string {
-		return this.buttons.find(button => button.active)?.icon ?? '';
-	}
-
-	#onThemeChanged(theme: Theme | null): void {
-		this.buttons.forEach(button => {
-			button.active = button.theme === theme;
-		});
+	#getPickerOptions(): PickerOption[] {
+		return [
+			{
+				icon: 'sun-fill',
+				value: 'light',
+				label: this.lightLabel,
+			},
+			{
+				icon: 'moon-stars-fill',
+				value: 'dark',
+				label: this.darkLabel,
+			},
+			{
+				icon: 'circle-half',
+				value: null,
+				label: this.autoLabel,
+			},
+		];
 	}
 }

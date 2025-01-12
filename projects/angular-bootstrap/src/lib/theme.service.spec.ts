@@ -2,7 +2,9 @@ import { TestBed } from '@angular/core/testing';
 import { DOCUMENT } from '@angular/common';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { ThemeService } from './theme.service';
-import { Theme, THEME_PROVIDER_TOKEN, THEMES } from './constants';
+import { THEME_PROVIDER_TOKEN } from './constants';
+import { Theme } from './types';
+import { THEMES } from './themes';
 
 class MockMatcher {
 	readonly listeners: ((e: MediaQueryListEvent) => void)[] = [];

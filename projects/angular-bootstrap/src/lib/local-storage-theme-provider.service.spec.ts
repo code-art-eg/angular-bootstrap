@@ -2,7 +2,10 @@ import { TestBed } from '@angular/core/testing';
 import { DOCUMENT } from '@angular/common';
 // noinspection ES6PreferShortImport
 import { LocalStorageThemeProviderService } from './local-storage-theme-provider.service';
-import { Theme, THEME_STORAGE_KEY_TOKEN, THEMES } from './constants';
+import { THEME_STORAGE_KEY_TOKEN } from './constants';
+import { THEMES } from './themes';
+
+import type { Theme } from './types';
 
 describe('ThemeStorageService', () => {
 	let service: LocalStorageThemeProviderService;

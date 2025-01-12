@@ -1,12 +1,9 @@
 import { inject, Injectable, OnDestroy } from '@angular/core';
-import {
-	Theme,
-	THEME_STORAGE_KEY_TOKEN,
-	ThemeProvider,
-	THEMES,
-} from './constants';
+import { THEME_STORAGE_KEY_TOKEN } from './constants';
 import { DOCUMENT } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
+import type { ThemeProvider, Theme } from './types';
+import { THEMES } from './themes';
 
 /**
  * Service to manage theme storage in local storage.
