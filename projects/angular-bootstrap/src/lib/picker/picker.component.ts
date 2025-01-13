@@ -13,7 +13,7 @@ interface Button {
 	selector: 'bs-picker',
 	imports: [],
 	templateUrl: './picker.component.html',
-	styleUrl: './picker.component.css',
+	styleUrl: './picker.component.scss',
 })
 export class PickerComponent {
 	show = false;

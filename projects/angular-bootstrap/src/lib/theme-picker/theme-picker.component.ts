@@ -12,7 +12,6 @@ import { PickerComponent } from '../picker/picker.component';
 @Component({
 	selector: 'bs-theme-picker',
 	templateUrl: './theme-picker.component.html',
-	styleUrl: './theme-picker.component.scss',
 	imports: [PickerComponent],
 })
 export class ThemePickerComponent implements OnChanges {
