@@ -18,3 +18,5 @@ export { ThemeService } from './lib/theme.service';
 
 export * from './lib/theme-picker/theme-picker.component';
 export * from './lib/picker/picker.component';
+
+export type { PickerOption } from './lib/types';
