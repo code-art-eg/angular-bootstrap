@@ -1,5 +1,5 @@
 {
 	"$schema": "https://typedoc.org/schema.json",
-	"entryPoints": ["./projects/angular-globalite/src/public-api.ts"],
+	"entryPoints": ["./projects/angular-boostrap/src/public-api.ts"],
 	"out": "./docs"
 }
