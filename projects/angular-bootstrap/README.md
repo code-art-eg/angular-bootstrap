@@ -20,6 +20,10 @@ yarn add @code-art-eg/angular-bootstrap bootstrap
 
 The library major version follows the major version of Angular it is compatible with. For example, version 19.x.x is compatible with Angular 19.x.x. Since the first version was created for Angular 19, the lowest major version is 19.0.1.
 
+## Documentation
+
+See documentation in [docs](https://code-art-eg.github.io/angular-bootstrap/) for more details.
+
 ## Services
 
 ### ThemeService
