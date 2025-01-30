@@ -6,16 +6,40 @@ import { THEMES } from './themes';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 const APP_THEME_ATTR = 'data-bs-theme';
 
+/**
+ * ThemeService is a service that manages the application theme.
+ * It listens to theme changes and applies the appropriate theme to the document body.
+ */
 @Injectable({
 	providedIn: 'root',
 })
 export class ThemeService implements OnDestroy {
+	/**
+	 * The document object.
+	 * @private
+	 */
 	readonly #document = inject(DOCUMENT);
+	/**
+	 * The media query matcher for detecting theme preference.
+	 * @private
+	 */
 	#matcher: MediaQueryList | null = null;
 
+	/**
+	 * The theme provider used to get the current theme.
+	 * @private
+	 */
 	readonly #themeProvider = inject(THEME_PROVIDER_TOKEN);
+
+	/**
+	 * The event listener for media query changes.
+	 * @private
+	 */
 	readonly #listener: (e: MediaQueryListEvent) => void;
 
+	/**
+	 * Constructor to initialize the service and subscribe to theme changes.
+	 */
 	constructor() {
 		this.#listener = this.#themeListener.bind(this);
 		this.#themeProvider.theme$
@@ -23,6 +47,9 @@ export class ThemeService implements OnDestroy {
 			.subscribe(() => this.#applyTheme());
 	}
 
+	/**
+	 * Lifecycle hook to clean up the media query event listener on destroy.
+	 */
 	ngOnDestroy(): void {
 		if (this.#matcher) {
 			this.#matcher.removeEventListener('change', this.#listener);
@@ -30,6 +57,10 @@ export class ThemeService implements OnDestroy {
 		}
 	}
 
+	/**
+	 * Applies the current theme to the document body.
+	 * @private
+	 */
 	#applyTheme(): void {
 		if (!this.#document) {
 			return;
@@ -50,6 +81,10 @@ export class ThemeService implements OnDestroy {
 		this.#document.body.setAttribute(APP_THEME_ATTR, theme);
 	}
 
+	/**
+	 * Event listener for media query changes to re-apply the theme.
+	 * @private
+	 */
 	#themeListener(): void {
 		this.#applyTheme();
 	}

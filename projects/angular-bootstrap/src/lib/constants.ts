@@ -3,8 +3,15 @@ import { LocalStorageThemeProviderService } from './local-storage-theme-provider
 import type { Theme, ThemeProvider } from './types';
 
 const CONFIG_PREFIX = 'angular-bootstrap';
+
+/**
+ * Default key for the theme storage key. See {@link LocalStorageThemeProviderService}.
+ */
 export const DEFAULT_APP_THEME_KEY = CONFIG_PREFIX + '.theme';
 
+/**
+ * Default theme for the application. Used when no theme is set and auto cannot be determined.
+ */
 export const DEFAULT_APP_THEME: Theme = 'light';
 
 /**

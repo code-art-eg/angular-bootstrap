@@ -9,6 +9,10 @@ interface Button {
 	active: boolean;
 }
 
+/**
+ * Gets the current value of the picker.
+ * @returns The current value.
+ */
 @Component({
 	selector: 'bs-picker',
 	imports: [],
@@ -20,6 +24,10 @@ export class PickerComponent {
 	buttons: Button[] = [];
 	#value: unknown;
 
+	/**
+	 * Sets the current value of the picker and updates the active button.
+	 * @param newVal The new value to set.
+	 */
 	@Input() set value(newVal: unknown) {
 		this.show = false;
 		if (this.#value === newVal) {
@@ -39,12 +47,28 @@ export class PickerComponent {
 		this.valueChange.emit(newVal);
 	}
 
+	/**
+	 * Gets the current value of the picker.
+	 * @returns The current value.
+	 */
 	get value(): unknown {
 		return this.#value;
 	}
 
+	/**
+	 * Event emitter that emits the new value when the picker value changes.
+	 */
 	@Output() valueChange = new EventEmitter<unknown>();
+
+	/**
+	 * The icon to display for the selection.
+	 */
 	@Input() selectionIcon: string | undefined;
+
+	/**
+	 * Sets the options for the picker and initializes the buttons.
+	 * @param options The options to set.
+	 */
 	@Input() set selections(options: PickerOption[]) {
 		let valueFound = false;
 		this.buttons = options.map((option, index) => {
@@ -67,6 +91,10 @@ export class PickerComponent {
 		}
 	}
 
+	/**
+	 * Gets the icon of the active button.
+	 * @returns The icon of the active button, or the selection icon if no button is active.
+	 */
 	getActiveIcon(): string {
 		return (
 			this.buttons.find(button => button.active)?.icon ??
