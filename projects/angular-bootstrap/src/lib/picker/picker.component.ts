@@ -1,11 +1,30 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import type { PickerOption } from '../types';
 
-interface Button {
+/**
+ * A button in the picker.
+ */
+export interface Button {
+	/**
+	 * The id of the button.
+	 */
 	id: number;
+	/**
+	 * The label of the button.
+	 */
 	label: string;
+	/**
+	 * The icon of the button. Using Bootstrap icons package.
+	 */
 	icon?: string;
+	/**
+	 * The value of the button.
+	 */
 	value: unknown;
+
+	/**
+	 * Whether the button is active.
+	 */
 	active: boolean;
 }
 
@@ -21,6 +40,10 @@ interface Button {
 })
 export class PickerComponent {
 	show = false;
+
+	/**
+	 * The buttons to display in the picker.
+	 */
 	buttons: Button[] = [];
 	#value: unknown;
 
