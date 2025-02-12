@@ -1,5 +1,7 @@
 # @code-art-eg/angular-bootstrap
 
+**_This repository is now archived and the project's code has been moved to [code-art-eg/angular](https://github.com/code-art-eg/angular)_**
+
 This library provides [Angular](https://angular.dev/) components, directives and services for the [Bootstrap](https://getbootstrap.com/) library.
 
 ## Installation
@@ -22,7 +24,7 @@ The library major version follows the major version of Angular it is compatible 
 
 ## Documentation
 
-See documentation in [docs](https://code-art-eg.github.io/angular-bootstrap/) for more details.
+See documentation in [docs](https://code-art-eg.github.io/angular/modules/_code-art-eg_angular-bootstrap.html) for more details.
 
 ## Services
 

@@ -22,3 +22,12 @@ export * from './lib/picker/picker.component';
 export type { Button } from './lib/picker/picker.component';
 
 export type { PickerOption } from './lib/types';
+
+export type {
+	PopupType,
+	PopupComponentType,
+	PopupOptions,
+	IPopupComponent,
+} from './lib/types';
+
+export { PopupService } from './lib/popup.service';
